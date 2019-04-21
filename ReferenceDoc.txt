@@ -1,0 +1,48 @@
+This document contains the detailed documentation on the python script.
+
+----class ReutersParser(HTMLParser)
+This class is used to parse through the sgm file and extract the required data for training the model.
+
+----def obtain_topic_tags()
+ Open the topic list file and import all of the topic names taking care to strip the trailing "\n" from each word.
+ 
+ ----def filter_doc_list_through_topics(topics, docs)
+ Reads all of the documents and creates a new list of two-tuples
+ that contain a single feature entry and the body text, instead of
+ a list of topics. It removes all geographic features and only 
+ retains those documents which have at least one non-geographic
+ topic.
+ 
+ -----def create_tfidf_training_data(docs)
+ Creates a document corpus list (by stripping out the
+ class labels), then applies the TF-IDF transform to this
+ list. 
+
+The function returns both the class label vector (y) and 
+the corpus token/feature matrix (X).
+
+
+------def get_raw_data()
+This function is used to parse through the entire .sgm files and obtain the dataset as a list
+
+------def preprocess_data()
+This function removes all the stopwords and applies stemming on the sentences in the dataset and returns the vectorised form of
+data after applying tfidfvectoriser
+
+-----def preprocess_test_text(data):
+This function is used to preprocess the given input text document and returns vectorised form of the given text data .
+
+------def prepare_raw_data():
+This function returns the train and test split of dataset used for training the model
+
+------def train_model():
+This function trains the Stochaistic Gradient Descent Classifier with the X_train and y_train data( training data set) and returns the model
+
+------def get_accuracy_score():
+This function gets the accuracy score of the model by validating the model with test data set
+
+-----def predict_data(data,model):
+This function predicts the class of input text document (in the form of string). This takens in the vectorised form of input 
+data obtained as output of preprocess_test_text function and returns the predicted class.
+    
+
